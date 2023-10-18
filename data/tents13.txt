@@ -1,0 +1,38 @@
+5
+2 0 2 0 0
+1 0 2 0 1
+. % . % .
+. . . . %
+. % . . .
+. . . . .
+. . . . .
+
+A 5x5 puzzle with multiple solutions using our strategy.  We are not checking
+that each tree has a unique tent, so it is possible that the correct
+solution is generated:
+
+ ---------
+|^ % ^ % -|2
+|- - - - %|0
+|- % ^ - ^|2
+|- - - - -|0
+|- - - - -|0
+ ---------
+ 1 0 2 0 1
+
+Or this incorrect one could be generated instead.  Here the trees at (0,3) and
+(1,4) share the tent at (0,4), and the tree at (2,1) has two tents at (2,0) and
+(2,2).
+
+ ---------
+|- % ^ % ^|2
+|- - - - %|0
+|^ % ^ - -|2
+|- - - - -|0
+|- - - - -|0
+ ---------
+  1 0 2 0 1
+
+We aren't going to test with this, but it is documented.  And it should be
+noted the instructor solution finds the incorrect one because it does not
+do a more exhaustive check!

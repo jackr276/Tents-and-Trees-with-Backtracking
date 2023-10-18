@@ -1,0 +1,65 @@
+Tents And Trees Pruning
+=======================
+
+The instructor solution implements 3 pruning strategies in order to determine
+what puzzles can be completed in a "suitable" amount of time using
+which strategy.  We are trying to determine what constitutes a "minimal"
+strategy for full credit, and what would be considered a better one
+for extra credit.
+
+The three pruning strategies will always check when a new tent is placed
+that there is at least 1 neighboring tree (N,S,E,W) and there is no
+neighboring tents (NW,N,NE,W,E,SW,S,SE).
+
+The difference is when they check the row and column "looking" values,
+to determine if the number of trees is correct or not.
+
+1. min pruning (tentsandtrees.backtracker.TentConfigMin).  Doesn't check any looking values until the
+very last cell is reached.  Then all row and column looking values are
+checked at once.
+
+2. med pruning (tentsandtrees.backtracker.TentConfigMed).  Waits to check until the last row or column
+is reached.  It then makes sure the looking value for the particular
+row/column adds up exactly.
+
+3. max pruning (TentConfig).  Each config where a tent was just placed is
+checked that it does not exceed the affected row/column looking value.
+A grass or tree last placed doesn't need to check, unless it is in the
+last row/column.  Regardless, if the last row or column is reached, it is
+checked against the corresponding looking value to make sure it adds up exactly.
+
+These are the times for the 3 pruning strategies on the following files:
+
+tents7.txt: (8x8)
+----------
+min: 9.24 seconds
+med: 0.005 seconds
+max: 0.002 seconds
+
+tents8.txt: (12x12)
+----------
+min: too long
+med: 0.189 seconds
+max: 0.034 seconds
+
+tents9.txt: (16x16)
+----------
+min: too long
+med: too long
+max: 76.726 seconds
+
+tents10.txt: (20x20)
+-----------
+min: too long
+med: too long
+max: 892.281 seconds
+
+Additional note:  If students store too much data in their config (like 
+arrays for the row and column sums), it will bog down the copy constructor
+to the point they won't be able to solve the 12x12.  It is better to
+just loop and check, versus making arrays that need to be copied for
+every config.
+
+Another note:  It is slightly faster when generating successors to 
+generate the tent first, and grass second.  But it won't make a significant
+difference if they do it the other way (talking a second or two at most).

@@ -1,0 +1,18 @@
+4
+0 0 0 2
+0 1 0 1
+% . . .
+. . . .
+. . . .
+. . % .
+
+This is a 4x4 board that has no solution.  But, if you fail to prune out
+a config where a tree has no tent, it will generate this:
+
+ -------
+|% - - -|0
+|- - - -|0
+|- - - -|0
+|- ^ % ^|2
+ -------
+ 0 1 0 1
